@@ -6,7 +6,13 @@
   <title>Hello World</title>
 </head>
 <body>
-  <script src="./src/hello-world.js"></script>
+  <!-- We ONLY need ONE JS file which contains all our codes -->
+  <!-- Do this by EXPLICITLY IMPORT all the dependencies inside the JS containing file -->
+  <!-- and EXPLICITLY EXPORT the function from the file where the function is defined -->
   <script src="./src/index.js"></script>
+
+  <!-- npx webpack --stats detailed - more details about build process
+    - Entrypoint - the file that webpack uses as the starting point when building the application, it includes the import of other modules from the application. Since the name of the file is not specified => Webpack will use the file index.js located inside the folder 'src' as the starting point. This is the default entry point when the configuration is not specified which can be changed easily later on when you create your own configuration.
+  -->
 </body>
 </html>
