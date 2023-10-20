@@ -6,20 +6,7 @@
   <title>Hello World</title>
 </head>
 <body>
-  <!-- Uncaught ReferenceError: helloWorld is not defined - index.js:1 -->
-  <!-- The problem is actually NOT related to the index.js BUT the order of the scripts in the HTML file. -->
-  <!-- Reason: We are using a function in index.js that is defined inside hello-world.js -->
-  <!-- Solution: hello-world.js should be included BEFORE index.js -->
   <script src="./src/hello-world.js"></script>
   <script src="./src/index.js"></script>
-
-  <!-- Note on installing webpack -->
-  <!-- npm install webpack webpack-cli --save-dev -->
-  <!-- webpack - the core functionality of webpack -->
-  <!-- webpack-cli - it is used to run webpack from the terminal, if you don't install this package alongside with "npm install webpack" then you are going to be prompted to install it when running webpack for the first time -->
-  <!-- --save-dev
-    - this option will add webpack to the package.json as a development dependency, if somebody else would like to work on the same application, they can easily find all the dependencies for this application listed in the package.json
-    - furthermore, they will be able to install all those dependencies by executing a single command from the terminal
-  -->
 </body>
 </html>
