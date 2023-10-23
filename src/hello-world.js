@@ -3,4 +3,3 @@ function helloWorld() {
 }
 
 export default helloWorld;
-// export default - ECMA script module
