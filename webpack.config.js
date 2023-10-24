@@ -1,6 +1,3 @@
-// The leading ^ and the trailing $ are known as position anchors, which match the start and end positions of the line, respectively.
-// '/\' Escape sequences
-
 const path = require('path')
 
 module.exports = {
@@ -41,12 +38,29 @@ module.exports = {
         // teach Webpack to read SCSS file
         test: /\.scss$/,
         use: [
+          // Processes from Right to Left
           'style-loader', 'css-loader', 'sass-loader'
-          // Orders explained: Processes from Right to Left
-          //// 1. First, it will invoke 'sass-loader', which will convert SASS to CSS.
-          //// 2. Then it will invoke 'css-loader', which will take that converted CSS and convert it to the JavaScript representation.
-          //// 3. And only then Webpack will invoke 'style-loader', which will create style text inside our HTML page and put CSS into it.
         ]
+      },
+      // using Babel in JavaScript
+      // This can be used as an example of how we can implement and use Webpack with Babel for modern JavaScript
+      // As of now the latest version of JavaScript is already fully supported in Webpack, therefore, there is no need for Babel.
+      // However, it might still be useful in some cases
+      {
+        test: /\.js$/,
+        exclude: /node_modules/, // applicable to all JavaScript files except those located inside the Node modules folder
+        // Read more: https://webpack.js.org/loaders/babel-loader/
+        use: {
+          loaders: 'babel-loader',
+          options: {
+            presets: ['@babel/env'], // First option is called 'presets'. We need a special Babel preset, which is called 'env'
+            // 'env' preset compiles the latest ECMA Script (For example, ECMA Script 6,7,8,9,...) down to ECMA Script 5
+            // In other word, 'env' preset supports the latest JavaScript standard defined in the latest ECMA Script specification.
+            plugins: ['@babel/plugin-proposal-class-properties']
+            // class properties are not part of the official ECMA Script specification => we need a special Babel plugin (plugin-proposal-class-properties) to support this feature
+            // If we run Webpack now, it will use Babel order when importing JavaScript files. And if it happens that our application uses some of the cutting edge features that does not make it to the current ECMA Script specification. Webpack will convert such code to the older JavaScript code, which is well understood by all browsers.
+          }
+        }
       }
     ]
   }
