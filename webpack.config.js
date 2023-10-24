@@ -36,6 +36,17 @@ module.exports = {
         use: [
           'style-loader', 'css-loader'
         ]
+      },
+      {
+        // teach Webpack to read SCSS file
+        test: /\.scss$/,
+        use: [
+          'style-loader', 'css-loader', 'sass-loader'
+          // Orders explained: Processes from Right to Left
+          //// 1. First, it will invoke 'sass-loader', which will convert SASS to CSS.
+          //// 2. Then it will invoke 'css-loader', which will take that converted CSS and convert it to the JavaScript representation.
+          //// 3. And only then Webpack will invoke 'style-loader', which will create style text inside our HTML page and put CSS into it.
+        ]
       }
     ]
   }

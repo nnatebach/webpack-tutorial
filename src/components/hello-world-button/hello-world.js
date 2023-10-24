@@ -1,8 +1,9 @@
 // import CSS file
-import './hello-world-button.css'
+import './hello-world-button.scss'
 
 // Classes are a template for creating objects.
 class HelloWorldButton {
+  // Rendering is the process used to show the output of markup and code to the user in the browser
   render() {
     const button = document.createElement('button')
     // innerHTML - gets or sets the HTML or XML markup contained within the element.
