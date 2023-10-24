@@ -42,6 +42,7 @@ module.exports = {
           'style-loader', 'css-loader', 'sass-loader'
         ]
       },
+      /*
       // using Babel in JavaScript
       // This can be used as an example of how we can implement and use Webpack with Babel for modern JavaScript
       // As of now the latest version of JavaScript is already fully supported in Webpack, therefore, there is no need for Babel.
@@ -61,7 +62,10 @@ module.exports = {
             // If we run Webpack now, it will use Babel order when importing JavaScript files. And if it happens that our application uses some of the cutting edge features that does not make it to the current ECMA Script specification. Webpack will convert such code to the older JavaScript code, which is well understood by all browsers.
           }
         }
-      }
+        // ERROR: [webpack-cli] Invalid configuration object. Webpack has been initialized using a configuration object that does not match the API schema.
+        // - configuration.module.rules[4].use has an unknown property 'loaders'. These properties are valid:
+        // object { ident?, loader?, options? }
+      } */
     ]
   }
 }
