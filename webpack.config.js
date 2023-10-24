@@ -14,16 +14,34 @@ module.exports = {
     rules: [
       {
         test: /\.(png|jpg)$/,
-        type: 'asset/inline' // asset bundle.js 2.65 MiB [emitted]
-        // asset inline
-        //// - it inlines a file into the bundle as a data URI.
-        //// - it will generate a Base64 algorithm for a representation of your file and bake it directly into the JavaScript bundle.
-        //// - it does NOT generate a new file
-        //// - asset inline can be used when importing small asset files like SVG.
-        /// - importing large files DOES work as well, YET it will enlarge the JS bundle by A LOT! => Why?? Because of the Base64 string converted image that has been injected directly into the JavaScript bundle (data:image/jpeg;base64 in 'bundle.js')
-        // Question: When is it better to use asset/inline than asset/resource?
-        // Answer: If those images come in huge files.
-        // Reason: As we use asset/resource, Webpack generates a separate file for every image we are using => the more images we are using, the more HTTP requests the browser needs to make => it is more beneficial for requests on huge files.
+        type: 'asset', // asset bundle.js 4.27 KiB [emitted] => 'bundle.js' is much smaller compared to 2.65 MiB for "asset/inline"
+        // (general) asset
+        //// - Webpack will automatically choose between either asset/resource or asset/inline based on the size of each file.
+        //// if (size < 8 kilobytes) {
+        ////    return asset/inline
+        ////   } else {
+        ////      return asset/resource
+        ////   }
+        //// - Since the 'kiwi' image comes in big size => asset/resource => a separate file for our image in the dist directory is generated
+        //// - By checking the image in the developer's tool, we can see that the 'src' attribute containing the URL to the image file comes from inside the dist folder ('dist/23de234a71129d9c860b.jpg')
+
+
+        // Changing the preset '8 kilobytes' to something else.
+        // Read more:
+        //// https://webpack.js.org/configuration/module/#ruleparserdataurlcondition
+        //// https://webpack.js.org/guides/asset-modules/#general-asset-type
+        parser: {
+          dataUrlCondition: { // the condition based on which Webpack decides if it should use asset/inline or asset/resource.
+            maxSize: 3 * 1024
+            // - now we've set the maximum file size to be 3 kilobytes from the default 8 kilobytes
+            // if (size < 3 kilobytes) {
+            //   return asset/inline
+            // } else {
+            //   return asset/resource
+            // }
+            }
+          }
+        }
       }
     ]
   }
