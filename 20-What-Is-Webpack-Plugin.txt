@@ -1,0 +1,3 @@
+Plugins can do things that loaders cannot do.
+
+Plugins can minimize the contents to decrease the bundle size => the bundles take less disk space which is faster to be loaded
