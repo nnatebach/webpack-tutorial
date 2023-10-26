@@ -1,4 +1,3 @@
-// import CSS file
 import './hello-world-button.scss'
 
 // Classes are a template for creating objects.
