@@ -9,13 +9,19 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 // CleanWebpackPlugin - Read more: https://www.npmjs.com/package/clean-webpack-plugin
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+// HtmlWebpackPlugin - Read more: https://webpack.js.org/plugins/html-webpack-plugin/#root
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+// As we use 'webpack caching' and 'clean', the new files in the 'dist' folder now have been updated and renamed => the page is now broken due to the old files are no longer there.
+// 'HtmlWebpackPlugin' creates HTML files for us
+
 module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.[contenthash].js', // browser caching
     path: path.resolve(__dirname, './dist'),
 
-    publicPath: 'dist/'
+    // publicPath: 'dist/',
+    publicPath: '' // since the 'index.html' is in the same folder with other CSS and JS files, there is no need for the prefix 'dist' anymore => change the path according to 'HtmlWebpackPlugin'
   },
   mode: 'none',
 
@@ -62,6 +68,7 @@ module.exports = {
       filename: 'style.[contenthash].css' // browser caching
     }),
     new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin()
   ]
 }
 
