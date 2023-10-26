@@ -6,6 +6,9 @@ const TerserPlugin = require('terser-webpack-plugin')
 // MiniCssExtractPlugin - Read more: https://webpack.js.org/plugins/mini-css-extract-plugin/
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+// CleanWebpackPlugin - Read more: https://www.npmjs.com/package/clean-webpack-plugin
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -14,7 +17,18 @@ module.exports = {
     filename: 'bundle.[contenthash].js', // browser caching
     path: path.resolve(__dirname, './dist'),
 
-    publicPath: 'dist/'
+    publicPath: 'dist/',
+
+    // alternative for 'CleanWebpackPlugin' - Read more: https://webpack.js.org/configuration/output/#outputclean
+    // clean: true, // Clean the output directory before emit.
+    // downside: clean only supports these two features
+    clean: {
+      dry: true, // Log the assets that should be removed instead of deleting them.
+      keep: /\.css/ // which file to keep in the 'dist' folder
+    },
+    // LOG from webpack.CleanPlugin
+    // <i> style.a561bdf228cd9c27c21a.css will be kept
+    // <i> bundle.e0420ae92264595cc4b1.js will be removed
   },
   mode: 'none',
 
@@ -62,7 +76,17 @@ module.exports = {
       // filename: 'style.css',
 
       filename: 'style.[contenthash].css' // browser caching
-    })
+    }),
+    // new CleanWebpackPlugin({
+    //   // clean multiple folders
+    //   cleanOnceBeforeBuildPatterns: [
+    //     '**/*', // remove all the files together with subdirectories inside the output pass folder.
+    //     path.join(process.cwd(), 'build/**/*') // remove all the files together with subfolders inside the 'build' folder
+    //     // https://dev.to/qbentil/nodejs-dirname-vrs-processcwd-3k88#:~:text=cwd()%3A-,Node.,directory%20of%20the%20NodeJS%20process.
+    //   ]
+    //   // Every time we run Webpack clean, Webpack plugin simply removes all the files from 'dist' folder.
+    //   // The result of Webpack clean will be the files with the latest updates, the rest will be removed from the 'dist'
+    // }),
   ]
 }
 
