@@ -6,4 +6,3 @@ helloWorldButton.render();
 
 const heading = new Heading()
 heading.render()
-heading.render()

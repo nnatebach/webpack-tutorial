@@ -19,6 +19,4 @@ class HelloWorldButton {
   }
 }
 
-let newWorld
-
 export default HelloWorldButton;

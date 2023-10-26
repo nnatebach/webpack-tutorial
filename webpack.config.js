@@ -7,28 +7,15 @@ const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 // CleanWebpackPlugin - Read more: https://www.npmjs.com/package/clean-webpack-plugin
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
   output: {
-    // filename: 'bundle.js',
-
     filename: 'bundle.[contenthash].js', // browser caching
     path: path.resolve(__dirname, './dist'),
 
-    publicPath: 'dist/',
-
-    // alternative for 'CleanWebpackPlugin' - Read more: https://webpack.js.org/configuration/output/#outputclean
-    // clean: true, // Clean the output directory before emit.
-    // downside: clean only supports these two features
-    clean: {
-      dry: true, // Log the assets that should be removed instead of deleting them.
-      keep: /\.css/ // which file to keep in the 'dist' folder
-    },
-    // LOG from webpack.CleanPlugin
-    // <i> style.a561bdf228cd9c27c21a.css will be kept
-    // <i> bundle.e0420ae92264595cc4b1.js will be removed
+    publicPath: 'dist/'
   },
   mode: 'none',
 
@@ -68,51 +55,17 @@ module.exports = {
     ]
   },
   plugins: [
-    // Minification of the Resulting Webpack Bundle
     new TerserPlugin(),
 
     // Extract CSS into a separate file
     new MiniCssExtractPlugin({
-      // filename: 'style.css',
-
       filename: 'style.[contenthash].css' // browser caching
     }),
-    // new CleanWebpackPlugin({
-    //   // clean multiple folders
-    //   cleanOnceBeforeBuildPatterns: [
-    //     '**/*', // remove all the files together with subdirectories inside the output pass folder.
-    //     path.join(process.cwd(), 'build/**/*') // remove all the files together with subfolders inside the 'build' folder
-    //     // https://dev.to/qbentil/nodejs-dirname-vrs-processcwd-3k88#:~:text=cwd()%3A-,Node.,directory%20of%20the%20NodeJS%20process.
-    //   ]
-    //   // Every time we run Webpack clean, Webpack plugin simply removes all the files from 'dist' folder.
-    //   // The result of Webpack clean will be the files with the latest updates, the rest will be removed from the 'dist'
-    // }),
+    new CleanWebpackPlugin(),
   ]
 }
 
 /*
 NOTE: The advantage of using asset modules (e.g. asset/source) is that we do not need to install any additional NPM packages.
 On the other hand, every Webpack loader comes as NPM package => we will need to install two additional NPM packages as 'css-loader' and 'style-loader'
-
-------
-
-Browser caching
-
-Problem 1: Every time your browser loads a website, it downloads all the assets (JS,CSS) required by the website => An issue for mobile users with slow internet connection.
-Reason 1: Everytime the page loads, they have to wait several minutes until the page is ready.
-Solution 1: Browser caching - Read more: https://webpack.js.org/guides/caching/
-How browser caching works?? If the file DID NOT change between the page loads, your browser can save it in a specific place, called cache. When you open the page again, browser will take the file from cache => Save time and internet traffic.
-This Problem 1 leads to the Problem 2
-
-Problem 2: If the file HAS BEEN CHANGED, your customers will never get the new version.
-Reason 2: the browser always takes the file from cache and it will not download the file with the latest updates.
-Solution 2: Update the cache => create a new file with the new name.
-How to do it?? Add [contenthash] to the output file name.
-How it works?? Each time you make a change in your code, browser remembers files by name. Therefore, if the name changes, browsers will download the new file. This is not done manually by us but Webpack can do this automatically.
-
-Example for browser caching: (Do NOT delete the 'dist' folder!!)
-Imagine you change something in your CSS code, but you haven't touched your JavaScript code. In this case, Webpack will generate the new name for your CSS file, but it will use the previous name for the JavaScript file. During the next page, reload, your customers will download the new CSS file, but they will get the JavaScript file from cache in order for this to work.
-Once we build the Webpack again, there will be two JS files, one is called 'bundle.js' and the other is 'bundle.sequence-number.js'. The sequence number in the newly created bundle.js is call the 'md5' hash. Read more (md4-hash): https://webpack.js.org/concepts/under-the-hood/#output
-And if you modify the files again (any files in the project folder), and you build webpack again then you will see another newly created 'bundle.[contenthash].js' file.
-Browser caching with [contenthash] works the same for BOTH JS AND CSS.
 */
