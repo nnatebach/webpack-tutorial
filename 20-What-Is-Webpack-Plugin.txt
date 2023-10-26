@@ -1,3 +1,10 @@
 Plugins can do things that loaders cannot do.
 
 Plugins can minimize the contents to decrease the bundle size => the bundles take less disk space which is faster to be loaded
+
+Goal: We should use All Webpack plugins as 'development dependencies'.
+WHY?? Because we need them ONLY during the build process.
+HOW?? Install All Webpack plugins with '--save-dev' option
+If we use '--save' without '-dev' then it would be considered a 'production' dependency which is required ONLY when we publish our project to production servers.
+However, we usually do NOT need Webpack plugins on production servers
+=> Therefore, we use '--save-dev' to make those plugins 'development dependencies'.
