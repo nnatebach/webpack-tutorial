@@ -1,6 +1,6 @@
 const path = require('path')
 
-// Terser - Read more: https://webpack.js.org/plugins/terser-webpack-plugin/
+// Terser - minify/minimize your JavaScript - Read more: https://webpack.js.org/plugins/terser-webpack-plugin/
 const TerserPlugin = require('terser-webpack-plugin')
 
 // MiniCssExtractPlugin - Read more: https://webpack.js.org/plugins/mini-css-extract-plugin/
