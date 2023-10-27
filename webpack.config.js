@@ -51,6 +51,14 @@ module.exports = {
           MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
         ]
       },
+      {
+        // teach Webpack how to handle HBS file
+        // two things to install for this package: handlebars-loader and handlebars package itself.
+        test: /\.hbs$/,
+        use: [
+          'handlebars-loader'
+        ]
+      }
     ]
   },
   plugins: [
@@ -66,9 +74,8 @@ module.exports = {
     new HtmlWebpackPlugin( // for more options: https://www.npmjs.com/package/html-webpack-plugin/v/4.5.1
       {
         title: 'Hello World', // specify a custom <title> for the page
-        meta: { // provide an additional meta tag
-          description: 'Some description' // this tells Webpack to add a description method to the page
-        }
+        template: './src/index.hbs',
+        description: 'Some description' // add a description method to the page - this should be on the same level as 'title'
       }
     ),
   ]

@@ -1,0 +1,13 @@
+{{!-- Create our own template for generating HTML files - Read more: https://github.com/jantimon/html-webpack-plugin/blob/main/docs/template-option.md --}}
+{{!-- handlebars-loader is the most popular template engine for this - Read more: https://github.com/pcardune/handlebars-loader --}}
+{{!-- Webpack will use everything you put inside this handlebars file as a template for the real HTML file --}}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{htmlWebpackPlugin.options.title}}</title>
+  <meta name="description" content="{{htmlWebpackPlugin.options.description}}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <body>
+  </body>
+</html>
