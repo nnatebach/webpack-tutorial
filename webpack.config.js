@@ -61,6 +61,8 @@ module.exports = {
       filename: 'style.[contenthash].css' // browser caching
     }),
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin() // NOTE: the <title> of the original HTML is 'Hello World', however, the <title> has been changed to 'Webpack App' ever since we use 'HtmlWebpackPlugin' to create the new HTML after Webpack build.
+    new HtmlWebpackPlugin()
+    // NOTE: the <title> of the original HTML is 'Hello World', however, the <title> has been changed to 'Webpack App' ever since we use 'HtmlWebpackPlugin' to create the new HTML after Webpack build.
+    // Check commit https://github.com/nnatebach/webpack-tutorial/commit/30d0f47b2f9b6bd570936342f8a1b8f757a4591e for the original index.html before using 'HtmlWebpackPlugin'
   ]
 }
