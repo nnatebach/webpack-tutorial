@@ -61,8 +61,24 @@ module.exports = {
       filename: 'style.[contenthash].css' // browser caching
     }),
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin()
-    // NOTE: the <title> of the original HTML is 'Hello World', however, the <title> has been changed to 'Webpack App' ever since we use 'HtmlWebpackPlugin' to create the new HTML after Webpack build.
-    // Check commit https://github.com/nnatebach/webpack-tutorial/commit/30d0f47b2f9b6bd570936342f8a1b8f757a4591e for the original index.html before using 'HtmlWebpackPlugin'
+    new HtmlWebpackPlugin( // The title of the newly created 'index.html' has now been changed to 'Webpack App' instead of 'Hello World'
+      {
+        // if we want to get back the original <title> we used before, we can specify more options
+        title: 'Hello World',
+
+        //// for demonstration purpose - filename - START
+
+        // we can specify more things if we want such as
+        filename: 'subfolder/custom_filename.html',
+        // this tells Webpack to create a 'subfolder' in the 'dist' folder and...
+        // put our HTML file inside this subfolder
+
+        //// for demonstration purpose - filename - END
+
+        meta: { // provide an additional meta tag
+          description: 'Some description' // this tells Webpack to add a description method to the page
+        }
+      }
+    ),
   ]
 }
