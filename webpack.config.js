@@ -19,7 +19,8 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
 
     publicPath: ''
-    // there is no need for the prefix 'dist' => change the path according to 'HtmlWebpackPlugin'
+    // since 'index.html' is now in the same directory path with 'style' (css) and 'bundle' (js)
+    // => No need for prefix 'dist' anymore
   },
   mode: 'none',
 
@@ -70,12 +71,12 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
 
-    // Webpack plugin for creating new HTML file during the build process
+    // Webpack plugin for creating new HTML file
     new HtmlWebpackPlugin( // for more options: https://www.npmjs.com/package/html-webpack-plugin/v/4.5.1
       {
         title: 'Hello World', // specify a custom <title> for the page
         template: './src/index.hbs',
-        description: 'Some description' // add a description method to the page - this should be on the same level as 'title'
+        description: 'Some description' // description method - this should be on the same level as 'title'
       }
     ),
   ]
