@@ -61,20 +61,11 @@ module.exports = {
       filename: 'style.[contenthash].css' // browser caching
     }),
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin( // The title of the newly created 'index.html' has now been changed to 'Webpack App' instead of 'Hello World'
+
+    // Webpack plugin for creating new HTML file during the build process
+    new HtmlWebpackPlugin( // for more options: https://www.npmjs.com/package/html-webpack-plugin/v/4.5.1
       {
-        // if we want to get back the original <title> we used before, we can specify more options
-        title: 'Hello World',
-
-        //// for demonstration purpose - filename - START
-
-        // we can specify more things if we want such as
-        filename: 'subfolder/custom_filename.html',
-        // this tells Webpack to create a 'subfolder' in the 'dist' folder and...
-        // put our HTML file inside this subfolder
-
-        //// for demonstration purpose - filename - END
-
+        title: 'Hello World', // specify a custom <title> for the page
         meta: { // provide an additional meta tag
           description: 'Some description' // this tells Webpack to add a description method to the page
         }
