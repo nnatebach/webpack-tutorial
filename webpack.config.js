@@ -62,6 +62,7 @@ module.exports = {
       }
     ]
   },
+  // Reference: https://webpack.js.org/plugins/
   plugins: [
     new TerserPlugin(),
 
