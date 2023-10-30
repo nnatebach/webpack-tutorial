@@ -1,10 +1,10 @@
-import kiwiImage from './kiwi.jpg'
+import Kiwi from './kiwi.jpg'
 import './kiwi-image.scss'
 
-class kiwiImage {
+class KiwiImage {
   render() {
     const img = document.createElement(img)
-    img.src = kiwiImage;
+    img.src = Kiwi;
     img.alt = 'kiwiImage'
     img.classList.add('kiwi-image')
     const bodyDOM = document.querySelector(body)
@@ -12,4 +12,4 @@ class kiwiImage {
   }
 }
 
-export default kiwiImage();
+export default KiwiImage;

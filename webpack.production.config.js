@@ -10,9 +10,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    'hello-world': './src/hello-world.js',
+    'kiwi': './src/kiwi.js',
+  },
   output: {
-    filename: 'bundle.[contenthash].js', // browser caching
+    filename: '[name].[contenthash].js', // we need different filenames for the different files => replace 'bundle' with '[name]'
     path: path.resolve(__dirname, './dist'),
 
     publicPath: ''
@@ -62,7 +65,7 @@ module.exports = {
   plugins: [
     // Extract CSS into a separate file
     new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css' // browser caching
+      filename: '[name].[contenthash].css' // browser caching
     }),
     new CleanWebpackPlugin(),
 
@@ -76,3 +79,13 @@ module.exports = {
     ),
   ]
 }
+
+// First build (npm run build):
+// WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+// This can impact web performance.
+// Assets:
+//   23de234a71129d9c860b.jpg (1.99 MiB)
+
+// WARNING in webpack performance recommendations:
+// You can limit the size of your bundles by using import() or require.ensure to lazy load some parts of your application.
+// For more info visit https://webpack.js.org/guides/code-splitting/
