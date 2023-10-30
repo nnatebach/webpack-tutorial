@@ -7,6 +7,10 @@ helloWorldButton.render();
 const heading = new Heading()
 heading.render()
 
+// Demonstration for real-life updated version of Webpack development
+const heading2 = new Heading()
+heading2.render()
+
 // Check to see which Webpack mode we are currently in
 if (process.env.NODE_ENV === 'production') {
   console.log('production');

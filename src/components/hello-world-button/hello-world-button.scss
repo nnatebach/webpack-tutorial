@@ -14,4 +14,7 @@ $text-font-color: red;
 .hello-world-text {
   color: $text-font-color;
   font-weight: bold;
+  &:hover {
+    color: turquoise;
+  }
 }
