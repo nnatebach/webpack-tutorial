@@ -1,0 +1,13 @@
+SINGLE PAGE APPLICATION
+
+Until this moment, we have been using Web back in order to take all our modules and put them together into a single JavaScript bundle.
+
+As a result, this bundle contains all our JavaScript code.
+
+HOWEVER,
+
+In some projects, we need to have more than one HTML pages, especially if these HTML pages are rendered on the server side, then most probably your server will send different pages to the browser depending on the URL that we write in the navigation bar. For example, if I go to our Hello World page, then I can see our Hello World button. And if I go to a separate TV page, then I can see our TV image.
+
+In this case, we need to find out how to handle these common dependencies as well.
+
+In this section, we are going to learn how to split our JavaScript code into multiple bundles as well as to create multiple HTML files for different pages of our website.
