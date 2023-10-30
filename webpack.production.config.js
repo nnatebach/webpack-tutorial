@@ -1,8 +1,5 @@
 const path = require('path')
 
-// Terser - minify/minimize your JavaScript - Read more: https://webpack.js.org/plugins/terser-webpack-plugin/
-// const TerserPlugin = require('terser-webpack-plugin') // 'terser' comes in default in 'production' mode
-
 // MiniCssExtractPlugin - Read more: https://webpack.js.org/plugins/mini-css-extract-plugin/
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
@@ -19,8 +16,6 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
 
     publicPath: ''
-    // since 'index.html' is now in the same directory path with 'style' (css) and 'bundle' (js)
-    // => No need for prefix 'dist' anymore
   },
 
   // Read more: https://webpack.js.org/configuration/mode/
@@ -55,7 +50,6 @@ module.exports = {
         ]
       },
       {
-        // teach Webpack how to handle HBS file
         // two things to install for this package: handlebars-loader and handlebars package itself.
         test: /\.hbs$/,
         use: [
@@ -66,8 +60,6 @@ module.exports = {
   },
   // Reference: https://webpack.js.org/plugins/
   plugins: [
-    // new TerserPlugin(), // remove this plugin as it comes in default in 'production' mode
-
     // Extract CSS into a separate file
     new MiniCssExtractPlugin({
       filename: 'style.[contenthash].css' // browser caching
