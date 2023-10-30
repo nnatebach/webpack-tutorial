@@ -6,3 +6,14 @@ helloWorldButton.render();
 
 const heading = new Heading()
 heading.render()
+
+// Check to see which Webpack mode we are currently in
+if (process.env.NODE_ENV === 'production') {
+  console.log('production');
+} else {
+  console.log('development');
+}
+
+// NOTE: 'production' and 'development' mode handles errors differently
+// intentionally invoke a method that does not exist
+helloWorldButton.notFoundMethod()

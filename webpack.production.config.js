@@ -1,7 +1,7 @@
 const path = require('path')
 
 // Terser - minify/minimize your JavaScript - Read more: https://webpack.js.org/plugins/terser-webpack-plugin/
-const TerserPlugin = require('terser-webpack-plugin')
+// const TerserPlugin = require('terser-webpack-plugin') // 'terser' comes in default in 'production' mode
 
 // MiniCssExtractPlugin - Read more: https://webpack.js.org/plugins/mini-css-extract-plugin/
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -22,7 +22,9 @@ module.exports = {
     // since 'index.html' is now in the same directory path with 'style' (css) and 'bundle' (js)
     // => No need for prefix 'dist' anymore
   },
-  mode: 'none',
+
+  // Read more: https://webpack.js.org/configuration/mode/
+  mode: 'production', // this enables different kind of plugins including 'terser'
 
   module: {
     rules: [
@@ -64,7 +66,7 @@ module.exports = {
   },
   // Reference: https://webpack.js.org/plugins/
   plugins: [
-    new TerserPlugin(),
+    // new TerserPlugin(), // remove this plugin as it comes in default in 'production' mode
 
     // Extract CSS into a separate file
     new MiniCssExtractPlugin({
