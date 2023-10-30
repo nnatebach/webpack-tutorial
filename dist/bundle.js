@@ -451,7 +451,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_hello_world_button_hello_world_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/hello-world-button/hello-world.js */ \"./src/components/hello-world-button/hello-world.js\");\n/* harmony import */ var _components_heading_heading_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/heading/heading.js */ \"./src/components/heading/heading.js\");\n\n\n\nconst helloWorldButton = new _components_hello_world_button_hello_world_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]()\nhelloWorldButton.render();\n\nconst heading = new _components_heading_heading_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]()\nheading.render()\n\n// Demonstration for real-life updated version of Webpack development\nconst heading2 = new _components_heading_heading_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]()\nheading2.render()\n\n// Check to see which Webpack mode we are currently in\nif (false) {} else {\n  console.log('development');\n}\n\n// NOTE: 'production' and 'development' mode handles errors differently\n// intentionally invoke a method that does not exist\nhelloWorldButton.notFoundMethod()\n\n//# sourceURL=webpack://webpack-tutorial/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_hello_world_button_hello_world_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/hello-world-button/hello-world.js */ \"./src/components/hello-world-button/hello-world.js\");\n/* harmony import */ var _components_heading_heading_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/heading/heading.js */ \"./src/components/heading/heading.js\");\n\n\n\nconst helloWorldButton = new _components_hello_world_button_hello_world_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]()\nhelloWorldButton.render();\n\nconst heading = new _components_heading_heading_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]()\nheading.render()\n\n// Check to see which Webpack mode we are currently in\nif (false) {} else {\n  console.log('development');\n}\n\n// NOTE: 'production' and 'development' mode handles errors differently\n// intentionally invoke a method that does not exist\nhelloWorldButton.notFoundMethod()\n\n//# sourceURL=webpack://webpack-tutorial/./src/index.js?");
 
 /***/ })
 
@@ -540,7 +540,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _com
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("33fb9485553b4b18ed0d")
+/******/ 		__webpack_require__.h = () => ("0b4a55c817ae9f367b00")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
