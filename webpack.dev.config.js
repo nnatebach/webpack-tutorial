@@ -26,16 +26,13 @@ module.exports = {
 
     static: {
       // https://webpack.js.org/configuration/dev-server/#directory
-      directory: path.resolve(__dirname, './dist') // 2. tell Webpack Dev Server what exactly should be served on that port, simply pointing Webpack to the dist folder.
+      directory: path.resolve(__dirname, './dist') // 2. tell Webpack Dev Server what exactly should be served on that port, simply pointing Webpack to the 'dist' folder.
     },
     // Read more: https://webpack.js.org/configuration/dev-server/#devserverdevmiddleware
     devMiddleware: { // handles webpack assets
       index: 'index.html', // 3. define the index file. In this case, we are going to use 'index.html'
 
-      writeToDisk: true // 4.
-      // 4. Problem: Your 'dist' folder is going to be empty even though the application would be available in the browser.
-      // 4. Reason: By default, Webpack dev server generates files in memory and doesn't save them to disk.
-      // 4. Solution: Enable option 'writeToDisk' => Webpack dev server will explicitly write the generated files to the dist folder and we can have a look if we want.
+      writeToDisk: true // 4. Have Webpack dev server explicitly writing the generated files to the 'dist' folder
     }
   },
   module: {
