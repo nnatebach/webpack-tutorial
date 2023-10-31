@@ -72,6 +72,7 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
 
+    //// Generate multiple HTML files
     // Webpack plugin for creating new HTML file
     new HtmlWebpackPlugin( // for more options: https://www.npmjs.com/package/html-webpack-plugin/v/4.5.1
       {
