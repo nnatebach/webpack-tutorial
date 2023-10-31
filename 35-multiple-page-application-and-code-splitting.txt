@@ -14,7 +14,7 @@ In this case, we need to find out how to handle these common dependencies as wel
 
 In this section, we are going to learn how to split our JavaScript code into multiple bundles as well as to create multiple HTML files for different pages of our website.
 
-SETTING UP CODE SPLITTING (Section 37, 38)
+SETTING UP CODE SPLITTING (lessons 37, 38)
 
 For multiple CSS and JS files
 1. Create the JS file for the component (e.g. hello-world.js)
