@@ -13,3 +13,26 @@ In some projects, we need to have more than one HTML pages, especially if these 
 In this case, we need to find out how to handle these common dependencies as well.
 
 In this section, we are going to learn how to split our JavaScript code into multiple bundles as well as to create multiple HTML files for different pages of our website.
+
+SETTING UP CODE SPLITTING (Section 37, 38)
+
+For multiple CSS and JS files
+1. Create the JS file for the component (e.g. hello-world.js)
+2. Import the CSS (SCSS, SASS) inside the JS file (e.g. hello-world-button.scss)
+3. In 'webpack.production.config.js', replace the current entrypoint './src/index.js' with the paths for 'hello-world' and 'kiwi'.
+4. In 'webpack.production.config.js', change the output filename from 'bundle.[contenthash].js' to '[name].[contenthash].js'
+Reason: From Step 3, the entrypoints are now from two files 'hello-world' and 'kiwi' instead of just 'bundle.js'
+Since we are now having two JS files for the entrypoints and we also have the style files (SCSS) imported inside of the JS files => The build production process will generate the two CSS files alongside with the two JS files.
+
+For multiple HTML files
+1. Originally we had the 'index.js' => we created 'index.hbs' as the HTML template file for the 'index.js'
+2. You need the plugin 'HtmlWebpackPlugin' to generate HTML, and ALSO one template loader 'Handlebars' for the template of the generated HTML file during Webpack Production build.
+3. As we created two new 'hello-world' and 'kiwi' JS files => we changed 'index.hbs' to 'page-template.hbs', a more generic name, so it would be more fit to be used as the page template file for both 'hello-world' and 'kiwi' JS files.
+4. Originally we had only one 'HtmlWebpackPlugin' for the 'index.js' file
+however, as we want to generate multiple HTML files => we duplicate the plugin 'HtmlWebpackPlugin' twice.
+
+Finally, what we got are
+- 2 JS files (hello-world, kiwi)
+- 2 CSS files (hello-world, kiwi)
+- 2 HTML files (hello-world, kiwi)
+Another way to look at them is that, for each component now we have 1 HTML, 1 CSS and 1 JS file.
