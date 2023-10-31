@@ -25,7 +25,27 @@ module.exports = {
 
   // Read more: https://webpack.js.org/configuration/mode/
   mode: 'production', // this enables different kind of plugins including 'terser'
-
+  // due to the huge size of the loader included in both JS files by Webpack
+  // hello-world.ac43e74a15f8d29b4cf6.js 70 KiB
+  // kiwi.437ff70dba3cf5bb0f94.js 69.7 KiB
+  // we can use the Webpack built-in optimization option with the 'splitChunks' delimiter. This indicates which chunks will be selected for optimization
+  // Read more: https://webpack.js.org/plugins/split-chunks-plugin/#splitchunkschunks
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
+  // Result with 'optimization' option
+  // hello-world.4545a24c1727a40f5959.js 2.01 KiB
+  // kiwi.3fe4982e8008ce5871af.js 1.65 KiB
+  // this bundle '486.10f8d22fb0c099d84f45.js 68.8 KiB' contains 'lodash' which will be cached separately
+  // now our users don't need to download it
+  // when we change something in our code, Webpack will automatically include this bundle into every HTML page that depends on it.
+  // in our current application, both our pages need it so Webpack will include it into both HTML files.
+  // 'lodash' will ONLY be included in the generated HTML file if we import it inside the JS file.
+  // Otherwise, as we disable it in the JS file then Webpack will NOT include the bundle in the generated HTML file.
+  // if the 'lodash' was NOT changed between your deployments, your user will NOT download this bundle every time you deploy your code.
+  // the users will download ONLY your code.
   module: {
     rules: [
       {
@@ -81,7 +101,7 @@ module.exports = {
         title: 'Hello World',
         template: './src/page-template.hbs', // rename 'index.hbs' to 'page-template.hbs'
         description: 'Hello World',
-        minify: false // By default, the generated HTML file is minified in Webpack => Disable it to see all the HTML contents
+        // minify: false // By default, the generated HTML file is minified in Webpack => Disable it to see all the HTML contents
       }
     ),
     // Include this plugin twice to generate two HTML files
@@ -92,7 +112,7 @@ module.exports = {
         title: 'Kiwi',
         template: './src/page-template.hbs', // rename 'index.hbs' to 'page-template.hbs'
         description: 'Kiwi',
-        minify: false
+        // minify: false
       }
     ),
   ]

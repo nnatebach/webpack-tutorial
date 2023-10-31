@@ -1,15 +1,14 @@
 import HelloWorldButton from './components/hello-world-button/hello-world.js'
-import Heading from './components/heading/heading.js'
-import kiwiImage from './components/kiwi-image/kiwi-image.js';
+import Heading from './components/heading/heading.js' // 'Heading' is the common dependency for both 'hello-world' and 'kiwi'
+import _ from 'lodash'
+
+const heading = new Heading()
+heading.render(_.upperFirst('hello world')) // we want to make the first letter of this string uppercase => use 'lodash'
+// NOTE: Using 'lodash' to make the first letter of the string uppercase is not the best solution
+// we are using it with the function 'upperFirst' just for the demonstration purpose here
 
 const helloWorldButton = new HelloWorldButton()
 helloWorldButton.render();
-
-const heading = new Heading()
-heading.render()
-
-const WikiImage = new kiwiImage()
-WikiImage.render()
 
 // Check to see which Webpack mode we are currently in
 if (process.env.NODE_ENV === 'production') {
