@@ -22,7 +22,10 @@ module.exports = {
   mode: 'production', // this enables different kind of plugins including 'terser'
   optimization: {
     splitChunks: {
-      chunks: 'all'
+      chunks: 'all',
+
+      // https://webpack.js.org/plugins/split-chunks-plugin/#splitchunksminsize
+      minSize: 3000 // specify this option in order to extract React as a separate bundle
     }
   },
   module: {

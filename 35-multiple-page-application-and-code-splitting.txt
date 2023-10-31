@@ -36,3 +36,21 @@ Finally, what we got are
 - 2 CSS files (hello-world, kiwi)
 - 2 HTML files (hello-world, kiwi)
 Another way to look at them is that, for each component now we have 1 HTML, 1 CSS and 1 JS file.
+
+SETTING CUSTOM OPTIONS FOR CODE SPLITTING
+
+As we import React for 'kiwi.js' and 'hello-world.js', there are only 'kiwi.[contenthash].js' and 'hello-world.[contenthash].js' generated from Webpack build BUT NO additional bundle including 'lodash' dependency. Webpack did NOT create a similar bundle for React because, by default, Webpack extracts common dependencies ONLY when they exceed 30kB before minification. Lodash is more than 30kB so it worked, BUT it does NOT work with React because react is much less than 30kB.
+
+Problem: What to do to extract React into a separate bundle?
+Solution: Specify custom option 'minSize' for splitting chunks as '3000' (3000 B = 3 KiB)
+optimization: {
+  splitChunks: {
+    minSize: 3000
+  }
+}
+
+The 3 new generated JS bundles are
+- hello-world.a9865e1182ef5e5fc1a5.js
+- 294.8abb13a23adfd21b295a.js
+- kiwi.d3e3565f58ee09961cb1.js
+'294.8abb13a23adfd21b295a.js' is the bundle containing the React

@@ -1,9 +1,9 @@
 import HelloWorldButton from './components/hello-world-button/hello-world.js'
 import Heading from './components/heading/heading.js' // 'Heading' is the common dependency for both 'hello-world' and 'kiwi'
-import _ from 'lodash'
+import React from 'react'
 
 const heading = new Heading()
-heading.render(_.upperFirst('hello world')) // uppercase for the first letter of the string
+heading.render('hello world')
 
 const helloWorldButton = new HelloWorldButton()
 helloWorldButton.render();
