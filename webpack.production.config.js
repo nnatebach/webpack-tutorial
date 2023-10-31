@@ -15,7 +15,9 @@ module.exports = {
     'kiwi': './src/kiwi.js',
   },
   output: {
-    filename: '[name].[contenthash].js', // we need different filenames for the different files => replace 'bundle' with '[name]'
+    filename: '[name].[contenthash].js', // multiple JS bundles
+    // we need different filenames for the different files => replace 'bundle' with '[name]'
+
     path: path.resolve(__dirname, './dist'),
 
     publicPath: ''
@@ -65,7 +67,8 @@ module.exports = {
   plugins: [
     // Extract CSS into a separate file
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css' // browser caching
+      filename: '[name].[contenthash].css' // multiple CSS bundles
+      // we need different filenames for the different files => replace 'bundle' with '[name]'
     }),
     new CleanWebpackPlugin(),
 
