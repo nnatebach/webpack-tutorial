@@ -6,9 +6,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    'hello-world': './src/hello-world.js',
+    'kiwi': './src/kiwi.js'
+  },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js', // No need of browser caching for development configuration (ONLY for production configuration) => No need for contenthash
     path: path.resolve(__dirname, './dist'),
 
     publicPath: ''
@@ -72,13 +75,25 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
 
-    new HtmlWebpackPlugin( // for more options: https://www.npmjs.com/package/html-webpack-plugin/v/4.5.1
+    //// Generating multiple HTML pages (2 HTML files)
+    new HtmlWebpackPlugin(
       {
-        title: 'Hello World', // specify a custom <title> for the page
-        template: './src/index.hbs',
-        description: 'Some description'
+        filename: 'hello-world.html',
+        chunks: ['hello-world'],
+        title: 'Hello world',
+        template: './src/page-template.hbs',
+        description: 'Hello World'
       }
     ),
+    new HtmlWebpackPlugin(
+      {
+        filename: 'kiwi.html',
+        chunks: ['kiwi'],
+        title: 'Kiwi',
+        template: './src/page-template.hbs',
+        description: 'Kiwi'
+      }
+    )
   ]
 }
 
