@@ -3,9 +3,7 @@ import Heading from './components/heading/heading.js' // 'Heading' is the common
 import _ from 'lodash'
 
 const heading = new Heading()
-heading.render(_.upperFirst('hello world')) // we want to make the first letter of this string uppercase => use 'lodash'
-// NOTE: Using 'lodash' to make the first letter of the string uppercase is not the best solution
-// we are using it with the function 'upperFirst' just for the demonstration purpose here
+heading.render(_.upperFirst('hello world')) // uppercase for the first letter of the string
 
 const helloWorldButton = new HelloWorldButton()
 helloWorldButton.render();

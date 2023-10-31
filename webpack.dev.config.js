@@ -1,10 +1,8 @@
 // configurations copied from 'webpack.production.config.js'
 const path = require('path')
 
-// CleanWebpackPlugin - Read more: https://www.npmjs.com/package/clean-webpack-plugin
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-// HtmlWebpackPlugin - Read more: https://webpack.js.org/plugins/html-webpack-plugin/#root
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -17,10 +15,8 @@ module.exports = {
   },
 
   // Goal: Making the website as fast as possible with as small bundles as possible
-  // Read more: https://webpack.js.org/configuration/mode/
   mode: 'development', // Source map is available for 'development' mode. Read more: https://web.dev/articles/source-maps
 
-  // Read more: https://webpack.js.org/configuration/dev-server/
   devServer: {
     port: 9000, // 1. a port on which this server will be running (e.g. 9000)
 
@@ -50,23 +46,21 @@ module.exports = {
         test: /\.txt/,
         type: 'asset/source'
       },
-      // Rule for styling (CSS) - Read more: https://webpack.js.org/loaders/#styling
       {
         test: /\.css$/,
         use: [
-          // use 'style-loader' instead of 'MiniCssExtractPlugin' to optimize the build process in DEVELOPMENT phase
+          // use 'style-loader' to optimize the build process in DEVELOPMENT phase
           'style-loader', 'css-loader'
         ]
       },
       {
         test: /\.scss$/,
         use: [
-          // use 'style-loader' instead of 'MiniCssExtractPlugin' to optimize the build process in DEVELOPMENT phase
+          // use 'style-loader' to optimize the build process in DEVELOPMENT phase
           'style-loader', 'css-loader', 'sass-loader'
         ]
       },
       {
-        // two things to install for this package: handlebars-loader and handlebars package itself.
         test: /\.hbs$/,
         use: [
           'handlebars-loader'
@@ -78,12 +72,11 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
 
-    // Webpack plugin for creating new HTML file
     new HtmlWebpackPlugin( // for more options: https://www.npmjs.com/package/html-webpack-plugin/v/4.5.1
       {
         title: 'Hello World', // specify a custom <title> for the page
         template: './src/index.hbs',
-        description: 'Some description' // description method - this should be on the same level as 'title'
+        description: 'Some description'
       }
     ),
   ]
