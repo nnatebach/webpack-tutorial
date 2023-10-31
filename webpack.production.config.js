@@ -72,15 +72,30 @@ module.exports = {
     // Webpack plugin for creating new HTML file
     new HtmlWebpackPlugin( // for more options: https://www.npmjs.com/package/html-webpack-plugin/v/4.5.1
       {
-        title: 'Hello World', // specify a custom <title> for the page
-        template: './src/index.hbs',
-        description: 'Some description' // description method - this should be on the same level as 'title'
+        filename: 'hello-world.html',
+        chunks: ['hello-world'], // specify which bundle for which file, the chunk file here is defined at the 'entrypoint'
+        title: 'Hello World',
+        template: './src/page-template.hbs', // rename 'index.hbs' to 'page-template.hbs'
+        description: 'Hello World',
+        minify: false // By default, the generated HTML file is minified in Webpack => Disable it to see all the HTML contents
+      }
+    ),
+    // Include this plugin twice to generate two HTML files
+    new HtmlWebpackPlugin(
+      {
+        filename: 'kiwi.html',
+        chunks: ['kiwi'], // specify which bundle for which file, the chunk file here is defined at the 'entrypoint'
+        title: 'Kiwi',
+        template: './src/page-template.hbs', // rename 'index.hbs' to 'page-template.hbs'
+        description: 'Kiwi',
+        minify: false
       }
     ),
   ]
 }
 
-// First build (npm run build):
+//// NOTES:
+//  As we first tried to generate different CSS and JS files and the image (npm run build) with one 'index.html' file, we got the following WARNING:
 // WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
 // This can impact web performance.
 // Assets:
@@ -89,3 +104,5 @@ module.exports = {
 // WARNING in webpack performance recommendations:
 // You can limit the size of your bundles by using import() or require.ensure to lazy load some parts of your application.
 // For more info visit https://webpack.js.org/guides/code-splitting/
+
+//// As we include the plugin 'HtmlWebpackPlugin' twice, with the second build the 'index.html' is now replaced with two new HTML files, 'hello-world' and 'kiwi.html'.
