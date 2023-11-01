@@ -3,6 +3,11 @@ const app = express() // create an instance of an express application in order t
 const path = require('path') // path is a built-in module inside Node JS => No need to install it via npm
 const fs = require('fs')
 
+// Goal: We need to send the contents of all static files back to the browser every time we get a Http request for those files.
+// Solution: We create a separate route specifically designed to handle static files. All our static files are located in the dist folder.
+// Define a separate URL for all our static files
+app.use('/static', express.static(path.resolve(__dirname, '../dist')))
+
 // first argument defines the URL
 // second argument: this function will be called every time our NodeJS application receives an HTTP request to the route specified in the first argument
 // We are telling Express that every time it gets an Http request to the home URL (the slash '/'), it needs to send the contents of HTML file back to the browser => Express framework is working well at this point. That is why we saw the blank page.
@@ -34,4 +39,4 @@ app.listen(3000, function () {
 
 ////// Reason: We did not teach Express framework how to load our assets
 // However, inside that HTML content there are links to CSS and JavaScript bundles, and when Express gets a request for a CSS bundle, it does NOT know what to do with this request.
-// We simply did NOT tell Express yet what it should do when it gets a request to a CSS bundle.
+// We did NOT tell Express yet what it should do when it gets a request to a CSS bundle.
