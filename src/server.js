@@ -5,6 +5,8 @@ const fs = require('fs')
 
 // Goal: We need to send the contents of all static files back to the browser every time we get a Http request for those files.
 // Solution: We create a separate route specifically designed to handle static files. All our static files are located in the dist folder.
+// Note: images, CSS files, and JavaScript files are treated as 'static' files in Express.
+// Read more: https://expressjs.com/en/starter/static-files.html
 // Define a separate URL for all our static files
 app.use('/static', express.static(path.resolve(__dirname, '../dist')))
 
