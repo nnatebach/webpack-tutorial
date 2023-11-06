@@ -4,13 +4,7 @@ const path = require('path') // path is a built-in module inside Node JS => No n
 const fs = require('fs')
 
 
-// We need to handle two pages 'hello-world' and 'kiwi'
-app.get('/hello-world/', function (req, res) {
-  const pathToHTMLFile = path.resolve(__dirname, '../dist/hello-world.html')
-  const contentFromHtmlFile = fs.readFileSync(pathToHTMLFile, 'utf-8')
-  res.send(contentFromHtmlFile)
-})
-app.get('/kiwi/', function (req, res) {
+app.get('/', function (req, res) {
   const pathToHTMLFile = path.resolve(__dirname, '../dist/kiwi.html')
   const contentFromHtmlFile = fs.readFileSync(pathToHTMLFile, 'utf-8')
   res.send(contentFromHtmlFile)
@@ -19,8 +13,8 @@ app.get('/kiwi/', function (req, res) {
 // Read more: Serving static files in Express https://expressjs.com/en/starter/static-files.html
 app.use('/static', express.static(path.resolve(__dirname, '../dist')))
 
-app.listen(3000, function () {
-  console.log('Application is running on http://localhost:3000/');
+app.listen(9002, function () { // this port needs to be the same with the 'devServer' port used in 'webpack.dev.config.js'
+  console.log('Application is running on http://localhost:9002/');
 })
 
 // For more info about 'app.use()' and 'app.get': https://expressjs.com/en/guide/using-middleware.html
