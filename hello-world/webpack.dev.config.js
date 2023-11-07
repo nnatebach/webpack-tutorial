@@ -63,7 +63,9 @@ module.exports = {
         }),
         new ModuleFederationPlugin({
             name: 'HelloWorldApp',
-            filename: 'remoteEntry.js',
+            // During the build process,Webpack will generate the file that contains everything this application exports to the outer world => other applications can use that.
+
+            filename: 'remoteEntry.js', // convention
 
             // https://webpack.js.org/concepts/module-federation/#offer-a-host-api-to-set-the-publicpath
             // list the module that will be exposed by the application

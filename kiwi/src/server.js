@@ -11,7 +11,7 @@ app.get('/', function (req, res) {
 })
 
 // Read more: Serving static files in Express https://expressjs.com/en/starter/static-files.html
-app.use('/static', express.static(path.resolve(__dirname, '../dist')))
+app.use('/', express.static(path.resolve(__dirname, '../dist')))
 
 app.listen(9002, function () { // this port needs to be the same with the 'devServer' port used in 'webpack.dev.config.js'
   console.log('Application is running on http://localhost:9002/');
