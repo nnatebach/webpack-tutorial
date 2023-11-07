@@ -1,5 +1,10 @@
 $font-size: 20px;
-$button-background-color: green;
+
+// $button-background-color: green; // the original color of the button is 'green'
+
+$button-background-color: blue; // for Federation Module, as we change the color of the button to 'blue' for 'hello-world' application and then build the application again, the color of BOTH buttons in 'hello-world' application AND 'kiwi' application all change to 'blue' WITHOUT having to change any code nor rebuild the 'kiwi' application
+// Reason: Module Federation loads these buttons dynamically at runtime => It will always take the latest, up to date version of the button.
+
 $button-font-color: white;
 $text-font-color: red;
 

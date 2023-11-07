@@ -24,9 +24,16 @@ module.exports = {
         rules: [
             {
                 test: /\.(png|jpg)$/,
-                use: [
-                    'file-loader'
-                ]
+                type: 'asset',
+                parser: {
+                    dataUrlCondition: {
+                        maxSize: 3 * 1024
+                    }
+                }
+            },
+            {
+                test: /\.txt/,
+                type: 'asset/source'
             },
             {
                 test: /\.scss$/,
@@ -65,7 +72,9 @@ module.exports = {
         }),
         new ModuleFederationPlugin({
             name: 'KiwiApp',
-            HelloWorldApp: 'HelloWorldApp@http://localhost:9001/remoteEntry.js'
+            remotes: {
+                HelloWorldApp: 'HelloWorldApp@http://localhost:9001/remoteEntry.js'
+            }
         })
     ]
 };
