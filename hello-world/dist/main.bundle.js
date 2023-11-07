@@ -49,7 +49,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_hello_world_button_hello_world_button_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/hello-world-button/hello-world-button.js */ \"./src/components/hello-world-button/hello-world-button.js\");\n/* harmony import */ var _components_heading_heading_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/heading/heading.js */ \"./src/components/heading/heading.js\");\n\n\nvar heading = new _components_heading_heading_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\nheading.render();\nvar helloWorldButton = new _components_hello_world_button_hello_world_button_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\nhelloWorldButton.render();\nif (false) {} else if (true) {\n  console.log('Development mode');\n}\n\n//# sourceURL=webpack://tutorial/./src/hello-world.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_hello_world_button_hello_world_button_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/hello-world-button/hello-world-button.js */ \"./src/components/hello-world-button/hello-world-button.js\");\n/* harmony import */ var _components_heading_heading_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/heading/heading.js */ \"./src/components/heading/heading.js\");\n\n\nvar heading = new _components_heading_heading_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\nheading.render('Hello World');\nvar helloWorldButton = new _components_hello_world_button_hello_world_button_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\nhelloWorldButton.render();\nif (false) {} else if (true) {\n  console.log('Development mode');\n}\n\n//# sourceURL=webpack://tutorial/./src/hello-world.js?");
 
 /***/ }),
 
@@ -540,7 +540,7 @@ eval("/** @typedef {\"info\" | \"warning\" | \"error\"} LogLevel */\n\n/** @type
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("19faef402c219c666a50")
+/******/ 		__webpack_require__.h = () => ("ba8cb1951d922617f6eb")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
