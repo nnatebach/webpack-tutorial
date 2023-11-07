@@ -70,6 +70,11 @@ module.exports = {
         }),
         new ModuleFederationPlugin({
             name: 'KiwiApp',
+            // Unlike the 'Hello World' application, this 'kiwi' application does not expose any modules
+            // Yet we will specify the list of 'remotes' modules shared by other applications that we are going to consume here.
+            // To be more precise, we will specify a list of 'remotes' application
+            // Step 1: We are going to consume some modules from 'HelloWorldApp' but we won't explicitly list the name of the module we are going to consume - HelloWorldApp
+            // Step 2: Specify the URL where the 'HelloWorldApp' is deployed - @http://localhost:9001/remoteEntry.js (check filename option in 'ModuleFederationPlugin' in 'webpack.dev.config.js' in 'hello-world' app)
             remotes: {
                 HelloWorldApp: 'HelloWorldApp@http://localhost:9001/remoteEntry.js'
             }
