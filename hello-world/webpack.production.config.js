@@ -68,7 +68,8 @@ module.exports = {
 
             // https://webpack.js.org/concepts/module-federation/#offer-a-host-api-to-set-the-publicpath
             exposes: {
-                './HelloWorldButton': './src/components/hello-world-button/hello-world-button.js'
+                './HelloWorldButton': './src/components/hello-world-button/hello-world-button.js',
+                './HelloWorldPage': './src/components/hello-world-page/hello-world-page.js'
             }
         })
     ]
