@@ -1,5 +1,22 @@
+import NavigationBar from './components/navigation-bar/navigation-bar.js';
+
+// create a navigation bar component that will allow the user to switch between these micro-frontends by clicking the corresponding links on the page
+const navigationItems = [
+  {
+    url: '/hello-world-page',
+    title: 'Hello World Page'
+  },
+  {
+    url: '/kiwi-page',
+    title: 'Kiwi Page'
+  }
+]
+
+// Consume the component
+const navigationBar = new NavigationBar();
+navigationBar.render(navigationItems)
+
 // We are going to render these components based on the URL the user enters in the browser
-// taking the part of the URL which does not include domain and port
 const url = window.location.pathname;
 
 // render the 'HelloWorldPage' on one URL and 'KiwiPage' on another URL
