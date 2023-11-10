@@ -68,3 +68,9 @@ module.exports = {
 // - Retain application state which is lost during a full reload.
 // - Save valuable development time by only updating what's changed.
 // - Instantly update the browser when modifications are made to CSS/JS in the source code, which is almost comparable to changing styles directly in the browser's dev tools.
+
+//// ERROR: ERROR in ./src/components/hello-world-page/hello-world-page.js 7:0-85
+// Module not found: Error: Can't resolve './components/hello-world-button/hello-world-button.js' in '/Users/nhanbach/Documents/Fastcoding-Vietnam/webpack-tutorial/hello-world/src/components/hello-world-page'
+// How did this error show up? This error showed up as I tried to build with 'npm run build' for 'hello-world' application
+// What was this error about? The relative path of some modules were not correct
+// What was I doing when I had this error? I tried to run the 'Micro Frontends' for 'dashboard', and then from 'dashboard' I will navigate to other pages, 'hello-world-page' and 'kiwi-page'. The first few attempts were failures due to the incorrect relative path used in 'hello-world' and 'kiwi' applications so I went to fix those paths.
