@@ -59,6 +59,7 @@ module.exports = {
     ]
 };
 
+// 'dashboard' application consumes only two federated modules and it does not care if those federated modules are consuming other federated modules inside => You can have as many nested federated modules as you want => Good thing!
 
 //// Note for package.json configuration - Read more: https://webpack.js.org/configuration/
 // Out of the box, webpack won't require you to use a configuration file. However, it will assume the entry point of your project is src/index.js and will output the result in dist/main.js minified and optimized for production.
