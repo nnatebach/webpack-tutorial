@@ -5,8 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // ModuleFederationPlugin - Read more: https://webpack.js.org/concepts/module-federation/
 // Multiple separate builds should form a Single application.
-// These separate builds act like containers and can expose and consume code between builds, creating a single, unified application.
-// This is often known as Micro-Frontends, but is not limited to that.
 const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {

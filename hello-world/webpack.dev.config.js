@@ -3,9 +3,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // ModuleFederationPlugin - Read more: https://webpack.js.org/concepts/module-federation/
-// Multiple separate builds should form a Single application.
-// These separate builds act like containers and can expose and consume code between builds, creating a single, unified application.
-// This is often known as Micro-Frontends, but is not limited to that.
 const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
@@ -63,12 +60,9 @@ module.exports = {
         }),
         new ModuleFederationPlugin({
             name: 'HelloWorldApp',
-            // During the build process,Webpack will generate the file that contains everything this application exports to the outer world => other applications can use that.
 
-            filename: 'remoteEntry.js', // convention
+            filename: 'remoteEntry.js',
 
-            // https://webpack.js.org/concepts/module-federation/#offer-a-host-api-to-set-the-publicpath
-            // list the module that will be exposed by the application
             exposes: {
                 './HelloWorldButton': './src/components/hello-world-button/hello-world-button.js',
                 './HelloWorldPage': './src/components/hello-world-page/hello-world-page.js'

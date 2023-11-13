@@ -9,7 +9,6 @@ module.exports = {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, './dist'),
 
-        // As we are exposing the page component to the application, we need to specify the publicPath where this application will be running.
         publicPath: 'http://localhost:9002/'
     },
     mode: 'development',

@@ -9,7 +9,6 @@ module.exports = {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, './dist'),
 
-        // As we are exposing the page component to the application, we need to specify the publicPath where this application will be running.
         publicPath: 'http://localhost:9002/'
     },
     mode: 'development',
@@ -72,7 +71,7 @@ module.exports = {
         }),
         new ModuleFederationPlugin({
             name: 'KiwiApp',
-            filename: 'remoteEntry.js', // specifying the 'remoteEntry' because we are going to expose components from this application.
+            filename: 'remoteEntry.js',
             exposes: {
                 './KiwiPage': './src/components/kiwi-page/kiwi-page.js'
             }

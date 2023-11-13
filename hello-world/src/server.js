@@ -1,8 +1,7 @@
-const express = require('express') // core functionality of Express framework
-const app = express() // create an instance of an express application in order to define routes using this variable
-const path = require('path') // path is a built-in module inside Node JS => No need to install it via npm
+const express = require('express')
+const app = express()
+const path = require('path')
 const fs = require('fs')
-
 
 app.get('/', function (req, res) {
   const pathToHTMLFile = path.resolve(__dirname, '../dist/hello-world.html')
@@ -10,13 +9,8 @@ app.get('/', function (req, res) {
   res.send(contentFromHtmlFile)
 })
 
-// Read more: Serving static files in Express https://expressjs.com/en/starter/static-files.html
 app.use('/', express.static(path.resolve(__dirname, '../dist')))
 
-app.listen(9001, function () { // this port needs to be the same with the 'devServer' port used in 'webpack.dev.config.js'
+app.listen(9001, function () {
   console.log('Application is running on http://localhost:9001/');
 })
-
-// For more info about 'app.use()' and 'app.get': https://expressjs.com/en/guide/using-middleware.html
-// For more info about 'app.listen()': https://expressjs.com/en/api.html#app.listen
-// Question: Why do we have 'app.listen()' in a different page?

@@ -76,9 +76,6 @@ module.exports = {
             exposes: {
                 './KiwiPage': './src/components/kiwi-page/kiwi-page.js'
             },
-            // Right now we are having the 'image-caption' showing in the page
-            // The 'image-caption' is supposed to be the caption for an image, YET there is no image for the page as of now
-            // We need to have an image for the 'image-caption'
             remotes: {
                 ImageCaptionApp: 'ImageCaptionApp@http://localhost:9003/remoteEntry.js'
             }
