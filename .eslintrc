@@ -1,0 +1,36 @@
+// ESLint Rules: https://eslint.org/docs/latest/rules/
+{
+  "extends": "eslint:recommended", // apply Lint only for the rules we can see in the docs, however, this is not enough by default
+
+  // Problem: ESLint will complain about the class properties
+  // e.g. error  Parsing error: Unexpected token =
+  // Reason: they are not the part of official specification yet
+  // Solution: use 'babel-eslint' parser => Install it with 'npm install babel-eslint --save-dev'
+  "parser": "@babel/eslint-parser",
+
+  // ESLint checks JS code against ECMA Script 5 Standard
+  // However, we are using ECMA Script 6 => More configuration needed
+  "parserOptions": {
+    "ecmaVersion": 13, // specify ECMA Script version
+    "sourceType": "module", // "sourceType" allows us to use ECMA Script 6, otherwise ESLint would complain about 'import' and 'export' keywords.
+    "requireConfigFile": false
+  },
+  // If 'ESLint' is linked, we will see a bunch of errors related to 'required function not defined' and document variable => We need to teach ESLint that we are using Node JS environment
+  "env": {
+    "node": true, // telling ESLint that those required functions are already defined
+    "browser": true // telling ESLint not to complain about the document variables in our JS since our code is going to be executed in the browser environment where those document variables are already defined.
+  }
+}
+
+// Problem: error  Parsing error: require() of ES Module
+// Reason: babel-eslint package has been deprecated and moved to another repository
+// Solution: replace babel-eslint with @babel/eslint-parser (same package, located in a different repo)
+// Procedures:
+// - Step 1: Uninstall 'babel-eslint' => npm uninstall babel-eslint
+// - Step 2: Install @babel/eslint-parser => npm install --save-dev @babel/eslint-parser
+// - Step 3: Replace "parser": "babel-eslint" with "parser": "@babel/eslint-parser" inside .eslintrc file.
+// - Step 4: add "requireConfigFile": false to the parserOptions section of .eslintrc file.
+// - Step 5: change ecmaVersion to 13 or “latest” as shown above.
+// - Step 6: run 'npm run lint'
+
+// Question: What is the difference between '@babel/eslint' and '@babel/eslint-parser' ?
