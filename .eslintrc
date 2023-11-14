@@ -39,3 +39,4 @@
 // - Step 6: run 'npm run lint'
 
 // Question: What is the difference between '@babel/eslint' and '@babel/eslint-parser' ?
+// Answer: '@babel/eslint' has been deprecated - Read more: https://www.npmjs.com/package/babel-eslint
