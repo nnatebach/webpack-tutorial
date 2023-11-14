@@ -19,6 +19,11 @@
   "env": {
     "node": true, // telling ESLint that those required functions are already defined
     "browser": true // telling ESLint not to complain about the document variables in our JS since our code is going to be executed in the browser environment where those document variables are already defined.
+  },
+  // Furthermore, errors about 'console.log' (error  Unexpected console statement  no-console)
+  // By default, this rule 'no-console' is recommended
+  "rules": {
+    "no-console": 0 // same with "off"
   }
 }
 
